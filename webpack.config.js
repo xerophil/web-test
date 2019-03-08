@@ -14,6 +14,31 @@ module.exports = {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    "file-loader",
+                    {
+                        loader: "image-webpack-loader"
+                    }
+                ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "fonts/"
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: ['html-loader']
             }
         ]
     },
